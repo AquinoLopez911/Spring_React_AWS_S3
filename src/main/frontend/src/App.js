@@ -19,17 +19,23 @@ const UserProfiles = () => {
     axios.get("http://localhost:8080/api/v1/user-profile")
     .then(
       res => {
+        console.log("profiles: ");
+        console.log(userProfiles);
         console.log("response: ");
         console.log(res.data);
 
+ 
         //changes state from [] to the list of users and thier info
         setuserProfiles(res.data);
+
       });
   }//end FetchUserProfiles
 
 
   useEffect( () => {
-    fetchUserProfiles();
+    console.log("fetching profiles");
+    fetchUserProfiles();   
+    console.log(userProfiles);   
   }, []);
 
   //main return 
@@ -56,7 +62,7 @@ const UserProfiles = () => {
         {img}
         <br></br>
         <br></br>
-        <MyDropzone {...userProfile} fetch={fetchUserProfiles}/>
+        <MyDropzone {...userProfile} setuserProfiles={setuserProfiles} />
         <h1>{userProfile.username}</h1>
         <p>{userProfile.userProfileId}</p>
         <br></br>
@@ -68,7 +74,7 @@ const UserProfiles = () => {
 
 
 
-function MyDropzone({userProfileId} , {fetch} ) {
+function MyDropzone({userProfileId, setuserProfiles}) {
 
   const onDrop = useCallback(acceptedFiles => {
     // Do something with the files
@@ -86,10 +92,14 @@ function MyDropzone({userProfileId} , {fetch} ) {
       headers : {
         "Content-Type" : "multipart/form-data",
       }
-    }).then(() => {
+    }).then( res => {
       console.log("profile image uploaded succesfully");
-
-      // fetch
+      // response returns the same as the initaial data loaded 
+      // now i need to change the state in the UserProfiles Compoenent 
+      // but how ???
+      console.log("changing state...")
+      setuserProfiles(res.data)                                         // not working
+      
       // window.location.reload(false);                           //refreshs whole page 
 
     }).catch(err => {

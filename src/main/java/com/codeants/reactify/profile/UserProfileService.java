@@ -36,7 +36,7 @@ public class UserProfileService {
 
 	
 	//uploads user profile image
-	public void uploadUserProfileImg(UUID userProfileId, MultipartFile file) {
+	public List<UserProfile> uploadUserProfileImg(UUID userProfileId, MultipartFile file) {
 		
 		//CHECK
 		//if image is not empty
@@ -66,8 +66,10 @@ public class UserProfileService {
 		String fileName = String.format("%s-%s ", file.getName(), UUID.randomUUID());
 		
 		try {
-			fileStore.save( path , fileName, Optional.of(metadata), file.getInputStream());
 			user.setUserProfileImgLink(fileName);
+			fileStore.save( path , fileName, Optional.of(metadata), file.getInputStream());
+			
+			return getUserProfiles();
 		}
 		catch(IOException e) {
 			throw new IllegalStateException(e);

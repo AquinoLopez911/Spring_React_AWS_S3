@@ -57,10 +57,12 @@ public class UserProfileController {
 			consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
 			produces = MediaType.APPLICATION_JSON_VALUE
 	)
-	public void uploadUserProfileImg(@PathVariable("userProfileId") UUID userProfileId,
+	public List<UserProfile> uploadUserProfileImg(@PathVariable("userProfileId") UUID userProfileId,
 										@RequestParam("file") MultipartFile file) {
 		
-		userProfileService.uploadUserProfileImg(userProfileId, file);
+		System.out.println(userProfileService.uploadUserProfileImg(userProfileId, file));
+		return userProfileService.uploadUserProfileImg(userProfileId, file);
+		
 		
 	}//end uploadUserProfileImg
 	

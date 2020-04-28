@@ -21,7 +21,6 @@ public class AmazonConfig {
 				"fR3SWCRfeIyt3ubhzfHkAysIKni6/qrjRiDZOF9K"
 		);
 		
-		
 		return AmazonS3ClientBuilder.
 				standard()
 				.withRegion("us-east-1")

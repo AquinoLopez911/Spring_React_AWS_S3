@@ -27,7 +27,6 @@ public class UserProfileController {
 	}
 	
 	
-	
 	//GET
 	
 	@GetMapping
@@ -36,18 +35,27 @@ public class UserProfileController {
 	}
 	
 	
-	@GetMapping("{userProfileId}/image/download")
-	public byte[] downloadUserProfileImg(@PathVariable("userProfileId") UUID userProfileId) {
+////	//use different get for the photo that uses the userProfileImgLink as a path variable
+//	@GetMapping("{userProfileId}/image/download")
+//	public byte[] downloadUserProfileImg(@PathVariable("userProfileId") UUID userProfileId) {
+//	
+//		return userProfileService.downloadUserProfileImg(userProfileId);
+//		
+//	}//end downloadUserProfileImg
 	
-		return userProfileService.downloadUserProfileImg(userProfileId);
+	
+	
+	@GetMapping("{userProfileId}/{userProfileImgLink}/download")
+	public byte[] downloadUserProfileImgWithLink(@PathVariable("userProfileId") UUID userProfileId, @PathVariable("userProfileImgLink") String userProfileImgLink) {
+	
+		return userProfileService.downloadUserProfileImgWithLink(userProfileId, userProfileImgLink);
 		
 
 	}//end downloadUserProfileImg
 	
 	
 	
-	
-	
+
 	
 	//POST
 	

@@ -63,12 +63,12 @@ public class UserProfileService {
 		//store the image in s3 bucket AND update database (userProfileImgLink) with s3 image link
 		String path = String.format("%s/%s", Bucket.PROFILE_IMAGE.getBucket(), user.getUserProfileId());
 		
-		String fileName = String.format("%s-%s ", file.getName(), UUID.randomUUID());
+		String fileName = String.format("%s-%s", file.getName(), UUID.randomUUID());
 		
 		try {
-			user.setUserProfileImgLink(fileName);
+//			user.setUserProfileImgLink(fileName);
 			fileStore.save( path , fileName, Optional.of(metadata), file.getInputStream());
-			
+			user.setUserProfileImgLink(fileName);
 			return getUserProfiles();
 		}
 		catch(IOException e) {
@@ -79,10 +79,9 @@ public class UserProfileService {
 	}//end uploadUserProfileImg()
 	
 	
-	//downloads user profile image  
-	public byte[] downloadUserProfileImg(UUID userProfileId) {
-		
-		UserProfile user = getUserProfileIdOrThrow(userProfileId);
+	public byte[] downloadUserProfileImgWithLink(UUID userProfileId, String userProfileImgLink) {
+			
+UserProfile user = getUserProfileIdOrThrow(userProfileId);
 		
 		String path = String.format("%s/%s",
                 Bucket.PROFILE_IMAGE.getBucket(),
@@ -93,7 +92,7 @@ public class UserProfileService {
 				.orElse(new byte[0]);
 		
 	}
-
+	
 	//returns one userProfile 
 	private UserProfile getUserProfileIdOrThrow(UUID userProfileId) {
 		

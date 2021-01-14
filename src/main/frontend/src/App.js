@@ -2,11 +2,7 @@ import React, {useState, useEffect, useCallback, useRef} from 'react';
 import {useDropzone} from 'react-dropzone'
 import axios from "axios"; 
 
-import logo from './logo.svg';
-
 import './App.css';
-
-
 
 function usePrevious(value) {
   // The ref object is a generic container whose current property is mutable ...

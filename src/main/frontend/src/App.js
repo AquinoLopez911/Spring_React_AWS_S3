@@ -135,8 +135,6 @@ function MyDropzone({userProfileId, setuserProfiles, prevProfiles}) {
         console.log("not equal lists")
         setuserProfiles(res.data)                             
       }
-      
-      // window.location.reload(false);             //refreshs whole page (completely not the way to do it)
 
     }).catch(err => {
       console.log(err);

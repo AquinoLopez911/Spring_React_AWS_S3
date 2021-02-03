@@ -119,20 +119,11 @@ function MyDropzone({userProfileId, setuserProfiles, prevProfiles}) {
         "Content-Type" : "multipart/form-data",
       }
     }).then( res => {
-      console.log("profile image uploaded succesfully");
-      // response returns the same as the initaial data loaded 
-      // now i need to change the state in the UserProfiles Compoenent 
-      // but how ???
-      // i passes setuserProfiles hook update function from parent class and will fill it with the new response
-      console.log("changing state...")
-      // works when imglink is null and changes to having an img link
-      // doesnt work when it only replaces the previous img link
+      console.log(res)
       if(prevProfiles !== res.data) {
         console.log("not equal lists")
         setuserProfiles(res.data)                             
       }
-      
-      // window.location.reload(false);             //refreshs whole page (completely not the way to do it)
 
     }).catch(err => {
       console.log(err);
@@ -154,13 +145,6 @@ function MyDropzone({userProfileId, setuserProfiles, prevProfiles}) {
   )
 }// end drop zone 
 
-
-
-
-
-
-
-
 bubbleSort(arr) { 
   let n = arr.length; 
   for (let i = 0; i < n-1; i++) 
@@ -173,14 +157,11 @@ bubbleSort(arr) {
       } 
 } 
 
-//this is my comments
-//this is my comments 
-//this is my comments 
-//this is my comments 
-//this is my comments 
-//this is my comments 
-//this is my comments 
-//this is my comments 
+for(let i=0; i=>20; i++) {
+  console.log('anthony is sus')
+}
+
+
 
 function App() {
   return (

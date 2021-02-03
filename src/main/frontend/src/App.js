@@ -2,11 +2,7 @@ import React, {useState, useEffect, useCallback, useRef} from 'react';
 import {useDropzone} from 'react-dropzone'
 import axios from "axios"; 
 
-import logo from './logo.svg';
-
 import './App.css';
-
-
 
 function usePrevious(value) {
   // The ref object is a generic container whose current property is mutable ...
@@ -123,14 +119,7 @@ function MyDropzone({userProfileId, setuserProfiles, prevProfiles}) {
         "Content-Type" : "multipart/form-data",
       }
     }).then( res => {
-      console.log("profile image uploaded succesfully");
-      // response returns the same as the initaial data loaded 
-      // now i need to change the state in the UserProfiles Compoenent 
-      // but how ???
-      // i passes setuserProfiles hook update function from parent class and will fill it with the new response
-      console.log("changing state...")
-      // works when imglink is null and changes to having an img link
-      // doesnt work when it only replaces the previous img link
+      console.log(res)
       if(prevProfiles !== res.data) {
         console.log("not equal lists")
         setuserProfiles(res.data)                             
@@ -156,15 +145,21 @@ function MyDropzone({userProfileId, setuserProfiles, prevProfiles}) {
   )
 }// end drop zone 
 
+bubbleSort(arr) { 
+  let n = arr.length; 
+  for (let i = 0; i < n-1; i++) 
+    for (let j = 0; j < n-i-1; j++) 
+      if (arr[j] > arr[j+1]) { 
+        // swap arr[j+1] and arr[j] 
+        let temp = arr[j]; 
+        arr[j] = arr[j+1]; 
+        arr[j+1] = temp; 
+      } 
+} 
 
-
-
-
-
-
-
-
-
+for(let i=0; i=>20; i++) {
+  console.log('anthony is sus')
+}
 
 
 

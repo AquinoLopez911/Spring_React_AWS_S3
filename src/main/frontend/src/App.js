@@ -2,11 +2,7 @@ import React, {useState, useEffect, useCallback, useRef} from 'react';
 import {useDropzone} from 'react-dropzone'
 import axios from "axios"; 
 
-import logo from './logo.svg';
-
 import './App.css';
-
-
 
 function usePrevious(value) {
   // The ref object is a generic container whose current property is mutable ...
@@ -149,30 +145,22 @@ function MyDropzone({userProfileId, setuserProfiles, prevProfiles}) {
   )
 }// end drop zone 
 
-
-
-
-// Yo its nick and i added these comments 
-// wassup
-
-// Yo its nick and i added these comments 
-// wassup
-
-// Yo its nick and i added these comments 
-// wassup
-
-// Yo its nick and i added these comments 
-// wassup
-
-// Yo its nick and i added these comments 
-// wassup
-
-// Yo its nick and i added these comments 
-// wassup
+bubbleSort(arr) { 
+  let n = arr.length; 
+  for (let i = 0; i < n-1; i++) 
+    for (let j = 0; j < n-i-1; j++) 
+      if (arr[j] > arr[j+1]) { 
+        // swap arr[j+1] and arr[j] 
+        let temp = arr[j]; 
+        arr[j] = arr[j+1]; 
+        arr[j+1] = temp; 
+      } 
+} 
 
 for(let i=0; i=>20; i++) {
   console.log('anthony is sus')
 }
+
 
 
 function App() {
